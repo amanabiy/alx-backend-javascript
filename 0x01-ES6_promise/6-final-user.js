@@ -2,26 +2,16 @@ import signUpUser from './4-user-promise';
 import uploadPhoto from './5-photo-reject';
 
 export default async function handleProfileSignup(firstName, lastName, fileName) {
-  let createdUser; let
-    photo;
-  try {
-    createdUser = await signUpUser(firstName, lastName);
-    photo = await uploadPhoto(fileName);
-  } catch (err) { console.log(''); }
-  // .finally(err => console.log(''))
-  return ([
-    {
-      status: 200,
-      value: createdUser,
-      photo,
-    },
-  ]);
-  //   const promises = [];
-  //   promises.push(signUpUser(firstName, lastName));
-  //   promises.push(uploadPhoto(fileName));
-  //   Promise.allSettled(promises).then((data) => ([
-  //     'hi',
-  //   ])).catch((err) => {
-  //     console.log(err);
-  //   });
+    const response = []
+    try {
+        const user = await signUpUser(firstName, lastName);
+        response.push({ status: 'success', value: user });
+        await uploadPhoto(fileName);
+    } catch (err) {
+        response.push({
+            status: 'failed',
+            value: `Error: ${fileName} is not valid`,
+        });
+    }
+    return response;
 }
