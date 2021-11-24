@@ -1,6 +1,13 @@
-import createUser from utils
+import { uploadPhoto, createUser } from './utils';
 
 export default function handleProfileSignup() {
-    createUser.then("hi")
-    console.log('hi')
+  return uploadPhoto()
+    .then(({ body }) => {
+      createUser()
+        .then(({ firstName, lastName }) => {
+          console.log(`${body} ${firstName} ${lastName}`);
+        })
+        .catch(() => console.log('Signup system offline'));
+    })
+    .catch(() => console.log('Signup system offline'));
 }
