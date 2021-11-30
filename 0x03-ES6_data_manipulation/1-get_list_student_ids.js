@@ -1,7 +1,4 @@
-export default function getListStudentIds(mylist) {
-  if (mylist.constructor.name !== 'Array') {
-    return [];
-  }
-  const newArray = mylist.map((element) => element.id);
-  return newArray;
+export default function getListStudentIds(array) {
+  if (!Array.isArray(array)) return [];
+  return array.map((i) => i.id);
 }
