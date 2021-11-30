@@ -5,5 +5,3 @@ console.log(getListStudentIds('hello'));
 console.log(getListStudentIds(getListStudents()));
 console.log(getListStudentIds(1));
 console.log(getListStudentIds(['asdf', 'asdf']));
-
-
