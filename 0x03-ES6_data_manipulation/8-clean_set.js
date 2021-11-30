@@ -6,7 +6,7 @@ export default function cleanSet(set, startString) {
   for (const element of set) {
     if (element.startsWith(startString)) {
       if (count === 0) myString = `${element.substring(length)}`;
-      myString = `${myString}-${element.substring(length)}`;
+      else myString = `${myString}-${element.substring(length)}`;
     }
     count += 1;
   }
