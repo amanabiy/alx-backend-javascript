@@ -30,4 +30,8 @@ export default class Airport {
   [util.inspect.custom]() {
     return `${this.constructor.name} [${this.code}] { _name: '${this.name}', _code: '${this.code}' }`;
   }
+
+  get [Symbol.toStringTag]() {
+    return this.code;
+  }
 }
