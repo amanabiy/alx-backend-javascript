@@ -4,7 +4,6 @@ const {expect} = require('chai')
 
 const sendPaymentRequestToApi = require('./3-payment')
 describe('sendPaymentRequestToApi', function() {
-
     it('should call calculateNumber', function() {
         const calcNumSpy = spy(Utils, 'calculateNumber');
         const consoleSpy = spy(console, 'log');
