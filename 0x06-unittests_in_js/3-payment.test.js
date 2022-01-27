@@ -1,14 +1,9 @@
 const Utils = require('./utils');
-const sinon = require('sinon');
+const {spy} = require('sinon');
 const {expect} = require('chai')
 
-const spy = sinon.spy
 const sendPaymentRequestToApi = require('./3-payment')
 describe('sendPaymentRequestToApi', function() {
-    afterEach(() => {
-        // Restore the default sandbox here
-        sinon.restore();
-      });
 
     it('should call calculateNumber', function() {
         const calcNumSpy = spy(Utils, 'calculateNumber');
@@ -18,5 +13,7 @@ describe('sendPaymentRequestToApi', function() {
         expect(calcNumSpy.calledOnceWithExactly('SUM', 1, 2)).to.equal(true);
         expect(consoleSpy.calledWithExactly('The total is: 3')).to.equal(true);
         expect(Utils.calculateNumber('SUM', 1, 2)).to.equal(requestResponse);
+        calcNumSpy.restore();
+        consoleSpy.restore();
     })
 })
