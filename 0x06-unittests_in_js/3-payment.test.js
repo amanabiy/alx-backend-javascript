@@ -9,10 +9,6 @@ describe('sendPaymentRequestToApi', function() {
         // Restore the default sandbox here
         sinon.restore();
       });
-    beforeEach(() => {
-        // setup sinon
-
-    })
 
     it('should call calculateNumber', function() {
         const calcNumSpy = spy(Utils, 'calculateNumber');
